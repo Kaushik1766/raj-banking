@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings. Override via -D system properties or environment
+             specific hibernate.properties if deploying to a different environment. -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/raj_banking?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Connection pool -->
+        <property name="hibernate.connection.pool_size">10</property>
+
+        <!-- Transaction management -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="com.rajbank.loanapp.model.User"/>
+        <mapping class="com.rajbank.loanapp.model.Customer"/>
+        <mapping class="com.rajbank.loanapp.model.LoanApplication"/>
+        <mapping class="com.rajbank.loanapp.model.RememberMeToken"/>
+        <mapping class="com.rajbank.loanapp.model.SequenceCounter"/>
+    </session-factory>
+</hibernate-configuration>
